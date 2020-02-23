@@ -1,0 +1,62 @@
+set autoindent
+colorscheme badwolf
+syntax enable
+set tabstop=4
+set number
+set showcmd
+set cursorline
+set wildmenu
+set showmatch
+filetype indent on
+set lazyredraw
+set incsearch
+set hlsearch
+nnoremap <leader><space> :nohlsearch<CR>
+set foldenable
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10
+set foldmethod=indent
+set laststatus=2
+
+nnoremap j gj
+nnoremap k gk
+nnoremap J ^
+nnoremap L $
+nnoremap gV `[v`]
+nnoremap <leader><Right> <C-W>l
+nnoremap <leader><Left> <C-W>h
+
+
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
+
+let g:indent_guides_guide_size = 1
+let g:indent_guides_color_change_percent = 3
+let g:indent_guides_enable_on_vim_startup = 1
+
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'itchyny/lightline.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'itchyny/vim-gitbranch.git'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'sjl/badwolf'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+call vundle#end()
+filetype plugin indent on
+
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
