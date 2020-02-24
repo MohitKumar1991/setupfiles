@@ -1,5 +1,4 @@
 set autoindent
-colorscheme badwolf
 syntax enable
 set tabstop=4
 set number
@@ -47,7 +46,6 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'ycm-core/YouCompleteMe'
 Plugin 'itchyny/lightline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/vim-gitbranch.git'
@@ -57,6 +55,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 call vundle#end()
 filetype plugin indent on
+colorscheme badwolf
 
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
