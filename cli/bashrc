@@ -1,5 +1,9 @@
 #! /bin/bash
 alias gs="git status"
-alias ga="git add ."
+alias ga="git add"
 alias gc="git commit -m"
 alias gd="git diff"
+alias gl="git log --graph --oneline"
+alias gpr="git pull --rebase"
+alias gpo="git push origin"
+alias gch="git checkout"
