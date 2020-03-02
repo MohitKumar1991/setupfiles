@@ -7,7 +7,7 @@ import click
 @click.option('--ts', default='def', help='tmux session name')
 @click.option('--vpc', default='app', help='vpc user or app')
 def jump(tmux,ts,vpc):
-    ip = '54.209.38.182' if vpc == 'app' else '54.87.137.227'
+    ip = 'i1' if vpc == 'app' else 'i2'
     if tmux == '1':
         cmd = 'ssh -t mohitkumar@{0} tmux attach -t {1}'.format(ip,ts)
     elif tmux == '3':
@@ -20,8 +20,8 @@ def jump(tmux,ts,vpc):
 @click.option('-s',help='server name')
 @click.option('--vpc',default='app',help='vpc of server')
 def goto(s,vpc):
-    dns = s + '.sntio.com'
-    ip = '54.209.38.182' if vpc == 'app' else '54.87.137.227'
+    dns = s + '.ip.com'
+    ip = 'i1' if vpc == 'app' else 'i2'
     cmd = 'ssh -t mohitkumar@{0} ssh {1}'.format(ip,dns)
     os.system(cmd)
 
