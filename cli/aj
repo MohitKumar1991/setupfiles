@@ -36,6 +36,16 @@ def api(c):
         cmd = 'ps -ef | grep "middleman"'
     os.system(cmd)
 
+
+@click.command()
+@click.option('-h',help='host')
+@click.option('-s',help='source path')
+@click.option('-d',help='destination path')
+def fu(h,s,d):
+    cmd = 'scp -o ProxyCommand="ssh mohitkumar@54.209.38.182 nc {0} 22" {1} mohitkumar@{0}:{2}'.format(h,s,d)
+    print(cmd)
+    os.system(cmd)
+
 @click.group()
 def main():
     pass
@@ -43,6 +53,7 @@ def main():
 main.add_command(jump)
 main.add_command(goto)
 main.add_command(api)
+main.add_command(fu)
 
 if __name__ == "__main__":
     main()
