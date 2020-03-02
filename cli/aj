@@ -3,15 +3,17 @@ import os
 import click
 
 @click.command()
-@click.option('--tmux',default=1,help='use tmux')
+@click.option('--tmux',default='1',help='use tmux')
 @click.option('--ts', default='def', help='tmux session name')
 @click.option('--vpc', default='app', help='vpc user or app')
-def sjp(tmux,ts,vpc):
+def jump(tmux,ts,vpc):
     ip = '54.209.38.182' if vpc == 'app' else '54.87.137.227'
-    if tmux:
+    if tmux == '1':
         cmd = 'ssh -t mohitkumar@{0} tmux attach -t {1}'.format(ip,ts)
-    else:
+    elif tmux == '3':
         cmd = 'ssh mohitkumar@{}'.format(ip)
+    else:
+        cmd = 'ssh -t mohitkumar@{0} tmux new -s {1}'.format(ip,ts)
     os.system(cmd)
 
 @click.command()
@@ -23,12 +25,24 @@ def goto(s,vpc):
     cmd = 'ssh -t mohitkumar@{0} ssh {1}'.format(ip,dns)
     os.system(cmd)
 
+@click.command()
+@click.option('-c',help='server name')
+def api(c):
+    if c == 'dev':
+        cmd = 'bundle exec middleman server'
+    elif c == 'build':
+        cmd = 'bundle exec middleman build --clean'
+    else:
+        cmd = 'ps -ef | grep "middleman"'
+    os.system(cmd)
+
 @click.group()
 def main():
     pass
 
-main.add_command(sjp)
+main.add_command(jump)
 main.add_command(goto)
+main.add_command(api)
 
 if __name__ == "__main__":
     main()
