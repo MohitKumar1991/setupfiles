@@ -42,7 +42,7 @@ def api(c):
 @click.option('-s',help='source path')
 @click.option('-d',help='destination path')
 def fu(h,s,d):
-    cmd = 'scp -o ProxyCommand="ssh mohitkumar@54.209.38.182 nc {0} 22" {1} mohitkumar@{0}:{2}'.format(h,s,d)
+    cmd = 'scp -o ProxyCommand="ssh mohitkumar@l1 nc {0} 22" {1} mohitkumar@{0}:{2}'.format(h,s,d)
     print(cmd)
     os.system(cmd)
 
