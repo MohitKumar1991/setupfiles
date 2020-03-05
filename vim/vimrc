@@ -22,8 +22,6 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'integralist/vim-mypy'
-Plugin 'ycm-core/YouCompleteMe'
 Plugin 'itchyny/lightline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/vim-gitbranch.git'
